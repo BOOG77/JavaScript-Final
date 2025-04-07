@@ -1,0 +1,73 @@
+<!--
+/*
+Names: Jeremy Paruch, , , ,
+Student Number: w0222971
+Date: March 30,2025
+Class: Client Side Programming
+Instructor: Nadia Gouda
+
+
+*/
+
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Jeremy's Assignment2 </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1> Jeremy's Submission for Assignment 2</h1>
+
+    <main>
+        <header>
+            <div>  <!-- For Displaying total balance -->
+                <h5> Total Balance</h5>
+                <span id="balance"> $0.00</span>
+            </div>
+            <div>   <!-- For Displaying total income -->
+                <h5> Total Income</h5>
+                <span id="income"> $0.00</span>
+            </div>
+            <div> <!-- For Displaying total balance -->
+                <h5> Expense</h5>
+                <span id="expense"> $0.00</span>
+            </div>
+        </header>
+        <section> <!-- For Displaying total balance -->
+            <h3> Transactions</h3>
+            <ul id="transactionList"></ul>
+            <div id="status"></div>
+        </section>
+        <section>
+            <h3> Add Transaction</h3>
+            <form id="transactionForm">
+                <div> <!-- Label for Name -->
+                    <label for="name">Name</label>
+                    <input type="text" name="name" required></input>
+                </div>
+                <div>  <!-- Label for AMount-->
+                    <label for="amount">Amount</label>
+                    <input type="number" name="Amount" value="0" min="0.01" step="00.1 required"></input>
+                </div>
+                <div>  <!-- Label for ADte -->
+                    <label for="date">Date</label>
+                    <input type="text" name="Date" required></input>
+                </div>  <!-- Submit Button -->
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+
+
+
+    <script src=script.js></script>
+</body>
+
+</html>

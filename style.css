@@ -1,0 +1,125 @@
+/*
+Names: Jeremy Paruch, , , ,
+Student Number: w0222971
+Date: March 30,2025
+Class: Client Side Programming
+Instructor: Nadia Gouda
+
+
+*/
+
+
+/* to apply to the entire page */
+*{
+    padding: 0;
+    margin: 0;
+}
+/* from w3 schools, bg colour is less white, text is still black, the total balance box and the submit button will be blue */
+:root{
+    --bg-color: #f6f8fa;
+    --text-color: #1d1f27;
+    --main-color: #1e90ff;
+}
+/* Spacing Things out */
+body{
+padding: 2rem;
+font-family:Verdana, Geneva, Tahoma, sans-serif;
+background-color:var(--bg-color);
+color: var(--text-color);
+}
+/* Trying to make the app box stand out from the background page */
+main{
+    max-width: 400px;
+    margin: 1rem auto;
+    background-color: #fff;
+    padding: 1rem;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+}
+/* Aligning Text to the center */
+h1 {
+ text-align: center;
+ font-size: 1.5rem;
+}
+/* Nitpicking */
+h3,header,ul{
+    margin-bottom: 0.5rem;
+}
+/* Text stays white, background colour stays the same, the rest is just keeping the text where i want it to be */
+header{
+    background-color: var(--main-color);
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+}
+/* Nitpicking */
+header div{
+    padding: 5px;
+}
+/* For the first child of the parent div */ /* see w3 schools mention */ 
+header div:first-child{
+    flex-basis: 100%;
+    font-size: 2.25rem;
+    font-weight: 600;
+
+}
+/* For the rest of the childs */ /* see w3 schools mention */ 
+header div:nth-child(n+2) {
+    flex-basis: 50%;
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+/* Nitpicking */
+header h5 {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+/* Nitpicking */
+form {
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+/* Making sure the form is properly displayed and a few nitpicks*/
+form input, form button {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    height: 42px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1rem;
+}
+
+form div:first-child{
+    flex-basis: 100%; /* see w3 schools mention */ 
+}
+
+form div:nth-child(n+2) {
+    flex-basis: calc (50% - 5px);
+}
+/* Formatting the buttons */ 
+form button{
+background-color: var(--main-color);
+color: #fff;
+font-size: 0.75rem;
+font-weight: 600;
+text-transform: uppercase;
+box-shadow: 0 3px 5px (0,0,0,0.1);
+}
+/* formatting labels */ 
+form label{
+
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+/* formatting UL tags */
+ul {
+list-style-type: none;
+}
