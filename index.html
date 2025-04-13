@@ -21,7 +21,7 @@ Instructor: Nadia Gouda
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body onload="loadLocal()">
     <h1> DJJJ Budget Tracker </h1>
 
     <main>
@@ -29,13 +29,14 @@ Instructor: Nadia Gouda
             <div>  <!-- For Displaying total balance -->
                 <h5> Total Balance</h5>
                 <span id="balance"> $0.00</span>
+                <p id="tracker"></p>
             </div>
             <div>   <!-- For Displaying total income -->
                 <h5> Total Income</h5>
                 <span id="income"> $0.00</span>
             </div>
             <div> <!-- For Displaying total balance -->
-                <h5> Expense</h5>
+                <h5> Total Expense</h5>
                 <span id="expense"> $0.00</span>
             </div>
         </header>
@@ -48,16 +49,24 @@ Instructor: Nadia Gouda
             <h3> Add Transaction</h3>
             <form id="transactionForm">
                 <div> <!-- Label for Name -->
-                    <label for="name">Name</label>
-                    <input type="text" name="name" required></input>
+                    <label for="name">Description</label>
+                    <input id="userDesc" type="text" name="desc" required></input>
+                </div>
+                <div> <!-- Label for income or expense -->
+                    <label> Type:
+                        <select id="userType" name="type">
+                           <option value="income">Income</option>
+                           <option value="expense">Expense</option>
+                        </select>
+                    </label><br>
                 </div>
                 <div>  <!-- Label for AMount-->
                     <label for="amount">Amount</label>
-                    <input type="number" name="Amount" value="0" min="0.01" step="00.1 required"></input>
+                    <input type="number" name="Amount" id="userAmount" value="0" min="0.00" step="00.0 required"></input> <!--changed this to 0.00 cause the amount needed a decimal or else it wouldnt submit when set to 0.01-->
                 </div>
                 <div>  <!-- Label for ADte -->
                     <label for="date">Date</label>
-                    <input type="text" name="Date" required></input>
+                    <input type="text" id="userDate" name="Date" required></input>
                 </div>  <!-- Submit Button -->
                 <button type="submit">Submit</button>
             </form>
