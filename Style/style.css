@@ -95,8 +95,8 @@ header div:first-child{
 /* For the rest of the childs */ /* see w3 schools mention */ 
 header div:nth-child(n+2) {
     flex-basis: 50%;
-    font-size: 1.25rem;
-    font-weight: 500;
+    font-size: 2.25rem;
+    font-weight: bold;
 }
 /* Nitpicking */
 header h5 {
@@ -196,4 +196,12 @@ footer{
     margin-top: 150px;
     float: right;
     margin-right: 150px;
+}
+
+#incomeExpenseDiv{
+    background-color: #6ab5ff;
+    border-radius: 5px;
+    border-width: 3px;
+    border-color: black;
+    border-style: solid;
 }

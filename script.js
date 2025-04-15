@@ -31,6 +31,9 @@ class Transaction {
 class BudgetTracker {
     constructor() {
         this.transactions = this.loadTransactions();
+        if(this.transactions == null){
+            this.transactions = [];
+        }
         this.form = document.getElementById("transactionForm");
         this.transactionList = document.getElementById("transactionList");
         this.balanceElement = document.getElementById("balance");
@@ -38,14 +41,12 @@ class BudgetTracker {
         this.saveLocal();
         this.initEventListeners();
         this.renderTransactions();
-        //this.updateBalance();
     }
 
     loadTransactions(){
-        let localTransactions = localStorage.getItem("transactions");
-        let transactions = JSON.parse(localTransactions);
-        console.log(transactions);
-        return transactions;
+            let localTransactions = localStorage.getItem("transactions");
+            let transactions = JSON.parse(localTransactions);
+            return transactions;
     }
 
     initEventListeners(){
@@ -105,19 +106,11 @@ class BudgetTracker {
         }
 
         this.transactions.push(transaction);
+        this.goodboyChecker();
         this.renderTransactions();
         this.renderBalance();
         this.saveLocal();
         this.clearForm();
-        if(this.showBalance() * 0.8 > this.ShowExpensesTransactions()){
-            document.getElementById("tracker").innerHTML = "GOOD JOB";
-        }
-        else if(this.showBalance() < 0){
-            document.getElementById("tracker").innerHTML = "BAD JOB";
-        }
-        else{
-            document.getElementById("tracker").innerHTML = "";
-        }
     }
 
     // Shows all the transactions that are classified under as income!
@@ -149,14 +142,41 @@ class BudgetTracker {
         document.getElementById("income").innerHTML = "$" + this.ShowIncomeTransactions();
         document.getElementById("expense").innerHTML = "$" + this.ShowExpensesTransactions();
     }
+
+     goodboyChecker(){
+        if(this.showBalance() < 0){
+            document.getElementById("balance").style.color = "red";
+        }
+        else if(this.showBalance() > 0){
+            document.getElementById("balance").style.color = "rgb(121, 199, 121)";
+        }
+        if(this.ShowIncomeTransactions() * 0.8 > this.ShowExpensesTransactions()){
+            document.getElementById("tracker").innerHTML = "GOOD BOY";
+            document.getElementById("tracker").style.color = "rgb(121, 199, 121)";
+        }
+        else if(this.showBalance() < 0){
+            document.getElementById("tracker").innerHTML = "BAD BOY";
+            document.getElementById("tracker").style.color = "red";
+        }
+        else{
+            document.getElementById("tracker").innerHTML = "";
+        }
+    }
+
+     clearTransactions(){
+        localStorage.clear();
+        this.transactions = [];
+        this.renderTransactions();
+     }
 }
 
 function loadLocal(){
-
+    theBudget.goodboyChecker();
     document.getElementById("balance").innerHTML = "$" +  theBudget.showBalance();
     document.getElementById("income").innerHTML = "$" +  theBudget.ShowIncomeTransactions();
     document.getElementById("expense").innerHTML = "$" +  theBudget.ShowExpensesTransactions();
 }
+
 let theBudget = new BudgetTracker();
 
 function exportLocal(){

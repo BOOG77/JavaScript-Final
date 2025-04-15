@@ -34,13 +34,15 @@
                 <span id="balance"> $0.00</span>
                 <p id="tracker"></p>
             </div>
-            <div>   <!-- For Displaying total income -->
-                <h5> Total Income</h5>
-                <span id="income"> $0.00</span>
-            </div>
-            <div> <!-- For Displaying total balance -->
+            <div id="incomeExpenseDiv" style="display: flex">   <!-- For Displaying total income -->
+                <div style="flex: 1; padding: 10px;">
+                    <h5> Total Income</h5>
+                    <span  id="income"> $0.00</span>
+                </div>
+            <div style="flex: 1; padding: 10px;">
                 <h5> Total Expense</h5>
                 <span id="expense"> $0.00</span>
+            </div>
             </div>
         </header>
         <section> <!-- For Displaying total balance -->
@@ -74,6 +76,7 @@
                 <button type="submit">Submit</button>
             </form>
             <button onclick="exportLocal()">Export to CSV</button>
+            <button onclick="theBudget.clearTransactions()">Clear Transactions</button>
         </section>
     </main>
 
