@@ -1,10 +1,11 @@
 
 /*
-Names: Jeremy Paruch, , , ,
-Student Number: w0222971
-Date: March 30,2025
-Class: Client Side Programming
-Instructor: Nadia Gouda
+    DJJJ Personal Budget Tracker
+
+    Course: PROG-2700 Client Side Programming
+    Author's: Dawson, Jeremy, Judah, Josh (DJJJ)
+    Date: 13/04/2025
+    Instructor: Nadia Gouda
 
 
 */
