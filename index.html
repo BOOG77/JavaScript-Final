@@ -15,13 +15,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>&#x1F4B0; DJJJ Budget Tracker &#x1F4B0;</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../JavaScript-Final/Style/style.css">
 </head>
 
 <body onload="loadLocal()">
-    <h1>&#x1F4B0; DJJJ Budget Tracker &#x1F4B0;</h1>
+    
+    <div class="banner">
+    <h1 class="banner-text">&#x1F4B0; DJJJ Budget Tracker &#x1F4B0;</h1>
+    <img src="../JavaScript-Final/Images/banner.png" alt="banner" id="banner" width="500" height="200">
+    </div>
 
-    <main>
+   <img src="../JavaScript-Final/Images/savings.jpg" alt="savings" id="savings" width="300" height="200">
+   <img src="../JavaScript-Final/Images/calculator.jpg" alt="calculator" id="calculator" width="300" height="200">
+    <main> 
         <header>
             <div>  <!-- For Displaying total balance -->
                 <h5> Total Balance</h5>
@@ -38,19 +44,19 @@
             </div>
         </header>
         <section> <!-- For Displaying total balance -->
-            <h3> Transactions</h3>
+            <h3> Transactions</h3><br>
             <ul id="transactionList"></ul>
             <div id="status"></div>
         </section>
         <section>
-            <h3> Add Transaction</h3>
+            <h3> Add Transaction:</h3> <br>
             <form id="transactionForm">
                 <div> <!-- Label for Name -->
-                    <label for="name">Description</label>
+                    <label for="name"> &#x1F4B0; Description:</label>
                     <input id="userDesc" type="text" name="desc" required></input>
                 </div>
                 <div> <!-- Label for income or expense -->
-                    <label> Type:
+                    <label> &#128184; Type:
                         <select id="userType" name="type">
                            <option value="income">Income</option>
                            <option value="expense">Expense</option>
@@ -58,11 +64,11 @@
                     </label><br>
                 </div>
                 <div>  <!-- Label for Amount-->
-                    <label for="amount">Amount</label>
-                    <input type="number" name="Amount" id="userAmount" value="0" min="0.00" step="00.0 required"></input> <!--changed this to 0.00 cause the amount needed a decimal or else it wouldnt submit when set to 0.01-->
+                    <label for="amount"> &#36; Amount:</label>
+                    <input type="number" name="Amount" id="userAmount" value="0" min="0.00" step="0.00 required"></input> <!--changed this to 0.00 cause the amount needed a decimal or else it wouldnt submit when set to 0.01-->
                 </div>
                 <div>  <!-- Label for Date -->
-                    <label for="date">Date</label>
+                    <label for="date"> &#x1F4C5; Date:</label>
                     <input type="date" id="userDate" name="Date" required></input>
                 </div>  <!-- Submit Button -->
                 <button type="submit">Submit</button>
@@ -73,6 +79,8 @@
 
 
     <script src=script.js></script>
+
+    <footer>&#169;DJJJ 2025</footer>
 </body>
 
 </html>

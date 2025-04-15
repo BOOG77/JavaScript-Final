@@ -16,7 +16,7 @@ Instructor: Nadia Gouda
 }
 /* from w3 schools, bg colour is less white, text is still black, the total balance box and the submit button will be blue */
 :root{
-    --bg-color: #34c046;
+    --bg-color: #72d17e;
     --text-color: #1d1f27;
     --main-color: #1e90ff;
 }
@@ -39,7 +39,33 @@ main{
 h1 {
  text-align: center;
  font-size: 1.5rem;
+ margin-bottom: 50px;
+ position: absolute;
 }
+
+.banner {
+    position: relative;
+    width: 100%;  
+    height: 150px;  
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 30px;
+}
+
+.banner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding-top: 45px;
+    transform: translate(-50%, -50%);
+    font-size: 24px; /* Adjust size */
+    font-weight: bold;
+    color: #000; /* Change if needed */
+}
+
 /* Nitpicking */
 h3,header,ul{
     margin-bottom: 0.5rem;
@@ -80,7 +106,6 @@ header h5 {
 }
 /* Nitpicking */
 form {
-
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -130,10 +155,45 @@ form div {
     width: 100%;
 }
 
+#userDesc{
+    height: 25px;
+}
+
 #userAmount{
     height: 10px;
 }
 
 #userDate{
     height: 20px;
+}
+
+footer{
+    padding-top: 120px;
+    padding-bottom: 0px;
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.75rem;
+    color: #666;
+}
+
+#savings {
+    display: block;
+    margin: 0 auto;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    margin-top: 150px;
+    float: left;
+    margin-left: 150px;
+}
+
+#calculator {
+    display: block;
+    margin: 0 auto;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    margin-top: 150px;
+    float: right;
+    margin-right: 150px;
 }
