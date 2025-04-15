@@ -16,7 +16,7 @@ Instructor: Nadia Gouda
 }
 /* from w3 schools, bg colour is less white, text is still black, the total balance box and the submit button will be blue */
 :root{
-    --bg-color: #f6f8fa;
+    --bg-color: #34c046;
     --text-color: #1d1f27;
     --main-color: #1e90ff;
 }
@@ -53,6 +53,7 @@ header{
     border-radius: 5px;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 /* Nitpicking */
 header div{
@@ -87,11 +88,11 @@ form {
 /* Making sure the form is properly displayed and a few nitpicks*/
 form input, form button {
     width: 100%;
-    padding: 10px;
+    padding: 5px;
     border: 1px solid #ddd;
     border-radius: 5px;
     margin-bottom: 5px;
-    height: 42px;
+    height: 50px;
     font-family: 'Times New Roman', Times, serif;
     font-size: 1rem;
 }
@@ -114,7 +115,6 @@ box-shadow: 0 3px 5px (0,0,0,0.1);
 }
 /* formatting labels */ 
 form label{
-
     font-size: 0.75rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -122,4 +122,18 @@ form label{
 /* formatting UL tags */
 ul {
 list-style-type: none;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#userAmount{
+    height: 10px;
+}
+
+#userDate{
+    height: 20px;
 }
