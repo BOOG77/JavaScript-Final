@@ -34,13 +34,15 @@ class BudgetTracker {
         this.transactionList = document.getElementById("transactionList");
         this.balanceElement = document.getElementById("balance");
 
+        this.saveLocal();
         this.initEventListeners();
         this.renderTransactions();
         //this.updateBalance();
     }
 
     loadTransactions(){
-        let transactions = [];
+        let localTransactions = localStorage.getItem("transactions");
+        let transactions = JSON.parse(localTransactions);
         console.log(transactions);
         return transactions;
     }
@@ -147,23 +149,19 @@ class BudgetTracker {
         document.getElementById("expense").innerHTML = "$" + this.ShowExpensesTransactions();
     }
 }
-// Transaction list to be generated from the incomes and expenses.
-function generateTransactionList(theBudget) {
-    let transactionListUl = document.getElementById('transactionList');
-    theBudget.ShowTransactions(transactionListUl); // this is working 
-    transactionListUl.innerHTML += "<li><strong>Total Income:</strong> " + theBudget.ShowIncomeTransactions() + "</li>";
-    transactionListUl.innerHTML += "<li><strong>Total Expenses:</strong> " + theBudget.ShowExpensesTransactions() + "</li>";
-    transactionListUl.innerHTML += "<li><strong>Balance:</strong> " + theBudget.showBalance() + "</li>";
-} // transactions created to showcase the example
 
 function loadLocal(){
-    let localTransactions = localStorage.getItem("transactions");
-    theBudget.transactions = JSON.parse(localTransactions);
-    document.getElementById("balance").innerHTML = theBudget.showBalance();
-    document.getElementById("income").innerHTML = theBudget.ShowIncomeTransactions();
-    document.getElementById("expense").innerHTML = theBudget.ShowExpensesTransactions();
-    const balanceValue = parseInt(localStorage.getItem("balance").slice(1));
-    localStorage.setItem("balanceNum", balanceValue);
-    this.transactions = localStorage.getItem("transactionsList");
+
+    document.getElementById("balance").innerHTML = "$" +  theBudget.showBalance();
+    document.getElementById("income").innerHTML = "$" +  theBudget.ShowIncomeTransactions();
+    document.getElementById("expense").innerHTML = "$" +  theBudget.ShowExpensesTransactions();
 }
 let theBudget = new BudgetTracker();
+
+function exportLocal(){
+    const data = theBudget.transactions;
+    const fileName = "myTransactions";
+    const exportType = "csv";
+    window.exportFromJSON({data, fileName, exportType});
+}
+
