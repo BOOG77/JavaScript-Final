@@ -204,4 +204,6 @@ footer{
     border-width: 3px;
     border-color: black;
     border-style: solid;
+    display: flex;
+    flex-direction: row;
 }

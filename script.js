@@ -167,6 +167,8 @@ class BudgetTracker {
         localStorage.clear();
         this.transactions = [];
         this.renderTransactions();
+        this.renderBalance();
+        this.goodboyChecker();
      }
 }
 
