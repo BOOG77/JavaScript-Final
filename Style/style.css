@@ -51,9 +51,10 @@ h1 {
     left: 50%;
     padding-top: 45px;
     transform: translate(-50%, -50%);
-    font-size: 24px; /* Adjust size */
+    font-size: 24px;
     font-weight: bold;
-    color: #000; /* Change if needed */
+    color: #000;
+    margin-left: 5px;
 }
 
 /* Nitpicking */
@@ -196,4 +197,14 @@ footer{
     border-style: solid;
     display: flex;
     flex-direction: row;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+#csv {
+    margin-right: 5px;
 }

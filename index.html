@@ -21,7 +21,7 @@
 <body onload="loadLocal()">
     
     <div class="banner">
-    <h1 class="banner-text">&#x1F4B0; DJJJ Budget Tracker &#x1F4B0;</h1>
+    <h1 class="banner-text">   &#x1F4B0; DJJJ Budget Tracker &#x1F4B0;</h1>
     <img src="../JavaScript-Final/Images/banner.png" alt="banner" id="banner" width="500" height="200">
     </div>
 
@@ -46,7 +46,7 @@
             </div>
         </header>
         <section> <!-- For Displaying total balance -->
-            <h3> Transactions</h3><br>
+            <h3> <u>Transactions:</u></h3><br>
             <ul id="transactionList"></ul>
             <div id="status"></div>
         </section>
@@ -75,8 +75,10 @@
                 </div>  <!-- Submit Button -->
                 <button type="submit">Submit</button>
             </form>
-            <button onclick="exportLocal()">Export to CSV</button>
-            <button onclick="theBudget.clearTransactions()">Clear Transactions</button>
+            <div class="buttons">
+            <button onclick="exportLocal()" id="csv">Export to CSV</button>
+            <button onclick="theBudget.clearTransactions()" id="clear">Clear Transactions</button>
+            </div>
         </section>
     </main>
 
