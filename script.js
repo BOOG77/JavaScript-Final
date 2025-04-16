@@ -10,8 +10,6 @@
 
 */
 
-
-//  Create a Transaction Class
 class Transaction {
     constructor(amount, category, type, date) {
         this.amount = amount;
@@ -25,9 +23,6 @@ class Transaction {
     }
 }
 
-
-
-//Create a BudgetTracker Class
 class BudgetTracker {
     constructor() {
         this.transactions = this.loadTransactions();
@@ -43,12 +38,14 @@ class BudgetTracker {
         this.renderTransactions();
     }
 
+    // grabs transactions array from localStorage, parses it to useable data
     loadTransactions(){
             let localTransactions = localStorage.getItem("transactions");
             let transactions = JSON.parse(localTransactions);
             return transactions;
     }
 
+    // event listener that adds a transaction when a submit event happens on the webpage, preventDefault stops the webpage from reloading itself
     initEventListeners(){
         this.form.addEventListener("submit", x =>{
             x.preventDefault();
@@ -56,39 +53,33 @@ class BudgetTracker {
         })
     }
     
+    // this sets the transactionList to blank, then it uses slice and sort to arrange the transactions. it makes it so the latest transaction is at the top
     renderTransactions(){
         this.transactionList.innerHTML = "";
         this.transactions.slice().sort((a, b) => b.id - a.id).forEach
         (transaction =>{
-            const transactionDiv = document.createElement("div");
-            transactionDiv.classList.add("transaction", transaction.type);
+            const transactionDiv = document.createElement("div"); // creates a div for each transaction
             transactionDiv.innerHTML = `
                 <ul id="transactionList">${transaction.date}\n${transaction.type}\n${transaction.description}\n${transaction.amount}</ul>
-            `;
-            this.transactionList.appendChild(transactionDiv);
+            `; // this is filling in the content of the list
+            this.transactionList.appendChild(transactionDiv); // appends the transactionDiv to the list
         }); // copies transactions array to a new array, sorts them by id
         
     }
 
+    // this saves the transactions array to the localStorage(turns it to a string, then saves it)
     saveLocal(){
-        const balance = document.getElementById("balance").textContent;
-        console.log(balance);
-        localStorage.setItem("balance", balance);
         const stringTransactions = JSON.stringify(this.transactions);
         localStorage.setItem("transactions", stringTransactions);
     }
 
-
-
+    // clears the form values
     clearForm(){
         document.getElementById("userType").value = "";
         document.getElementById("userDesc").value = "";
         document.getElementById("userDate").value = "";
         document.getElementById("userAmount").value = "";
     }
-
-
-
 
     // adding transaction
     addTransaction(Transaction) {
@@ -113,7 +104,7 @@ class BudgetTracker {
         this.clearForm();
     }
 
-    // Shows all the transactions that are classified under as income!
+    // shows income with a loop. returns the value for calculation purpose
     ShowIncomeTransactions() {
         let TotalIncome = 0;
         for (let i = 0; i < this.transactions.length; i++) {
@@ -121,8 +112,10 @@ class BudgetTracker {
                 TotalIncome += this.transactions[i].amount;
             }
         }
-        return TotalIncome
-    } // This will show the transactions that are listed as expenses
+        return TotalIncome;
+    } 
+
+    // shows expenses with a loop. returns the value for calculation purpose
     ShowExpensesTransactions() {
         let TotalExpenses = 0;
         for (let i = 0; i < this.transactions.length; i++) {
@@ -131,24 +124,33 @@ class BudgetTracker {
             }
         }
         return TotalExpenses;
-    } // Balance is income subtract expenses
+    }
+
+    // income - expense = value
     showBalance() {
         return this.ShowIncomeTransactions() - this.ShowExpensesTransactions();
     }
 
-    
+    // sets the innerHTML of our divs using getelementbyid and calling functions that return our calculated numbers
     renderBalance(){
         document.getElementById("balance").innerHTML = "$" + this.showBalance();
         document.getElementById("income").innerHTML = "$" + this.ShowIncomeTransactions();
         document.getElementById("expense").innerHTML = "$" + this.ShowExpensesTransactions();
     }
 
-     goodboyChecker(){
+    // this checks your balance and tells you if you're doing a good job
+    // if your balance is 0, it remains white
+    // if your balance is negative it turns red
+    // if your income is 20% higher than your expenses it turns green
+    goodboyChecker(){
         if(this.showBalance() < 0){
             document.getElementById("balance").style.color = "red";
         }
         else if(this.showBalance() > 0){
             document.getElementById("balance").style.color = "rgb(121, 199, 121)";
+        }
+        else{
+            document.getElementById("balance").style.color = "white";
         }
         if(this.ShowIncomeTransactions() * 0.8 > this.ShowExpensesTransactions()){
             document.getElementById("tracker").innerHTML = "GOOD BOY";
@@ -163,15 +165,18 @@ class BudgetTracker {
         }
     }
 
-     clearTransactions(){
+    // clears local storage, reinitializes the array so it isn't null for use in our other methods.
+    // re-renders transactions, balance and checks if you're a good boy
+    clearTransactions(){
         localStorage.clear();
         this.transactions = [];
         this.renderTransactions();
         this.renderBalance();
         this.goodboyChecker();
-     }
+    }
 }
 
+// takes the balance income and expense from the budgetTracker storage and sets the innerHTML to the values
 function loadLocal(){
     theBudget.goodboyChecker();
     document.getElementById("balance").innerHTML = "$" +  theBudget.showBalance();
@@ -181,6 +186,7 @@ function loadLocal(){
 
 let theBudget = new BudgetTracker();
 
+// exporting the transaction array to CSV
 function exportLocal(){
     const data = theBudget.transactions;
     const fileName = "myTransactions";
