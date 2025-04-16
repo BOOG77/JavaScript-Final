@@ -193,4 +193,3 @@ function exportLocal(){
     const exportType = "csv";
     window.exportFromJSON({data, fileName, exportType});
 }
-
